@@ -227,7 +227,7 @@ class RobotResultInterface(object):
         end_timestamp = self.ms_to_timestamp(end_time)
 
         if setup:
-            keyword_type = RobotResultKeyword.SETUP_TYPE
+            keyword_type = RobotResultBody.SETUP_TYPE
         elif teardown:
             keyword_type = RobotResultKeyword.TEARDOWN_TYPE
         else:
@@ -358,11 +358,11 @@ class RobotRunningInterface(object):
             test_robot_counterpart = robot_suite.tests.create(name, tags=tags)
             if kw['pass']:
                 args = [msg if msg else 'Test passed :D']
-                test_robot_counterpart.keywords.create('Pass execution',
+                test_robot_counterpart.body.create_keyword('Pass execution',
                                                        args=args)
             else:
                 args = [msg if msg else 'Test failed D:']
-                test_robot_counterpart.keywords.create('Fail', args=args)
+                test_robot_counterpart.body.create_keyword('Fail', args=args)
 
 
 class RobotInterface(object):

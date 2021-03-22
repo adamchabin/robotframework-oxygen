@@ -52,8 +52,8 @@ class BaseHandler(object):
             # ALL keywords, setup or not, preceding the trigger will be treated
             # as setup keywords later. Same goes for keywords succeeding the
             # trigger; they will become teardown keywords.
-            setup_keywords = test.keywords[:curr]
-            teardown_keywords = test.keywords[(curr+1):]
+            setup_keywords = test.setup
+            teardown_keywords = test.teardown
 
             self._report_oxygen_run(keyword, setup_keywords, teardown_keywords)
 
